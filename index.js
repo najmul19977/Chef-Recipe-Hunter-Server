@@ -19,6 +19,19 @@ app.get('/chefData/:id',(req,res)=>{
     res.send(selectedData);
 })
 
+const recipeData = require('./recipe.json');
+app.get('/',(req,res) =>{
+    res.send('hello from my second server is running');
+})
+app.get('/recipeData',(req,res) =>{
+    res.send(recipeData);
+})
+app.get('/recipeData/:id',(req,res) =>{
+    const id = req.params.id;
+    const selectData =recipeData.find(n=>n.id ===id);
+    res.send(selectData);
+})
+
 app.listen(port,()=>{
     console.log(`my first server is running on port:${port} `)
 
